@@ -2,46 +2,42 @@
 /**
  * @file
  * @author ThatOneNeji
- * @version 1.5.0
+ * @version 1.6.0
  * @overview
- * <p>This application is used to connect to the targeted SFTP server, get a list of files, download them, apply the ETL process, and then keep a list of files that have already been processed. It can also load files from a local directory.</p><br>
- * <h3>Process Flow</h3>
- * <p>[Scan target SFTP server] -> [See which files have not been downloaded as yet, and download them] -> [Parse the files] -> [Load the data into MySQL database]</p><br>
- * <h3>Installation</h3>
- * <p>Running the following command will download the required 3rd part libraries as well as create documentation regarding the main JS file under "documentation"</p>
- * <pre>npm install</pre><br>
- * <h4>Running</h4>
- * <pre>node mnpsftpclient.js</pre><br>
- * <h3>Notes</h3>
- * <h4>Default database table structure</h4>
- * <pre>
- * CREATE TABLE `msisdn`
-(
-   `firstseen`      timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'This field indicated when the MSISDN was first loaded',
-   `msisdn`         varchar(20) NOT NULL COMMENT 'The Mobile Station International Subscriber Directory Number',
-   `np`             varchar(20) DEFAULT NULL COMMENT '???',
-   `lastupdated`    timestamp
-                    NOT NULL COMMENT 'The last this changes were made to this row'
-                    DEFAULT CURRENT_TIMESTAMP
-                    ON UPDATE CURRENT_TIMESTAMP,
-   `source`         varchar(64) NOT NULL COMMENT '???',
-   `IDNumber`       varchar(64) DEFAULT NULL COMMENT '???',
-   `RNORoute`       varchar(20) DEFAULT NULL COMMENT '???',
-   `Action`         varchar(20) DEFAULT NULL COMMENT '???',
-   PRIMARY KEY(`msisdn`)
-)
-ENGINE = InnoDB
-DEFAULT CHARSET = utf8;</pre>
- * <h3>Troubleshooting</h3>
- * <p>Issue 1</p>
- * <p>Issue 2</p><br>
+ * <p>This group of classes provide functionality that is reused across the various netstats applications.</p><br>
+ * <hr style="margin-top: 1px; margin-bottom: 1px;">
+ * <h2 style="margin-top: 2px;">Installation</h2>
+ * <p>Running the following command will install the classes into your project</p>
+ * <pre>npm i git+ssh://git@github.com:ThatOneNeji/CommonFunctions.git --save</pre><br>
+ * <hr style="margin-top: 1px; margin-bottom: 1px;">
+ * <h2 style="margin-top: 2px;">Using</h2>
+ * <h4>Logger</h4>
+ * <p>The <i>Logger</i> class is used for logging.</p>
+ * <h6>Declaring</h6>
+ * <pre>const Logger = require('commonfunctions').Logger;</pre><br>
+ * <h6>Using</h6>
+ * <pre>let Logging = new Logger();</pre><br>
+ * <h4>MessageBroker</h4>
+ * <p>The <i>MessageBroker</i> class handles the incoming and outgoing messages.</p>
+ * <h6>Declaring</h6>
+ * <pre>const MessageBroker = require('commonfunctions').MessageBroker;</pre><br>
+ * <h6>Using</h6>
+ * <pre>let MessageBroker = new MessageBroker();</pre><br>
+ * <h4>NejiUtils</h4>
+ * <p>The <i>NejiUtils</i> class contains commonly used functions.</p>
+ * <h6>Declaring</h6>
+ * <pre>const NejiUtils = require('commonfunctions').NejiUtils;</pre><br>
+ * <h6>Using</h6>
+ * <pre>let NejiUtils = new NejiUtils();</pre><br>
  */
 
+
 const Logger = require('./lib/logger.js');
-module.exports = Logger;
-
 const MessageBroker = require('./lib/messagebroker.js');
-module.exports = MessageBroker;
-
 const NejiUtils = require('./lib/nejiutils.js');
-module.exports = NejiUtils;
+
+module.exports = {
+    Logger: Logger,
+    MessageBroker: MessageBroker,
+    NejiUtils: NejiUtils
+};
