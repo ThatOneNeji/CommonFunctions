@@ -22,10 +22,28 @@
         "inverseNav": false,
         "default": {
             "outputSourceFiles": true
+        },
+        "better-docs": {
+            "name": "CommonFunctions",
+            "logo22": "images/logo.png",
+            "title": "CommonFunctions Documentation",
+            "css": "style.css",
+            "trackingCode222": "tracking-code-which-will-go-to-the-HEAD",
+            "hideGenerator": false,
+            "navLinks222": [{
+                    "label": "Github",
+                    "href": "https://github.com/SoftwareBrothers/admin-bro"
+                },
+                {
+                    "label": "Example Application",
+                    "href": "https://admin-bro-example-app.herokuapp.com/admin"
+                }
+            ]
         }
     },
     "opts": {
-        "template": "./node_modules/ink-docstrap/template",
+        "template22": "./node_modules/ink-docstrap/template",
+        "template": "node_modules/better-docs",
         "encoding": "utf8",
         "destination": "./documentation/",
         "recurse": true

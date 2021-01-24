@@ -1,11 +1,11 @@
 {
     "name": "commonfunctions",
-    "version": "1.0.0",
+    "version": "1.5.0",
     "description": "Common functions used within the netstats applications",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "documentation": "./node_modules/.bin/jsdoc -c jsdoc.json",
+        "documentation": "./node_modules/.bin/jsdoc -c jsdoc.json index.js",
         "lint": "./node_modules/.bin/eslint logger.js messagebroker.js nejiutils.js"
     },
     "repository": {
@@ -13,7 +13,9 @@
         "url": "git+https://github.com/ThatOneNeji/CommonFunctions.git"
     },
     "keywords": [
-        "messagebroker"
+        "messagebroker",
+        "logging",
+        "utilities"
     ],
     "author": "ThatOneNeji",
     "license": "MIT",
@@ -30,6 +32,7 @@
         "netmask": "^1.0.6"
     },
     "devDependencies": {
+        "better-docs": "^2.3.2",
         "eslint": "^7.18.0",
         "eslint-config-google": "^0.14.0",
         "ink-docstrap": "^1.3.2",
