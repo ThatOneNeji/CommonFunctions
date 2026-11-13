@@ -43,6 +43,21 @@ So releases = bump `package.json` + `index.js` `@version`, commit, `git tag vX.Y
 - `MessageBroker#close()` must be called when done (tests rely on it so the process exits).
 - `test/messagebroker.test.js` injects a fake `amqp-connection-manager` into `require.cache` before requiring the module — no broker needed.
 
+## V2 refactor (branch `V2_refactor`)
+
+Branch created 2026-11-13 from `main` at the 1.9.5 release (`v1.9.5`), as the starting point for a planned major refactor that will ship as **2.0.0**. The author has their own list of refactor ideas kept elsewhere; ask for it before starting rather than assuming the scope.
+
+Breaking-change candidates already identified (from the to-do list below) that fit a major version:
+
+- `MessageBroker` module-level shared state → per-instance state
+- `onMessage` without `externalHandover`, and no nack for rejected messages
+- `batchPublish` mutating the caller's array
+- `defaultValue` treating `0` / `''` / `false` as missing
+- Dropping the `NejiUtils.RegexPattern*` pass-through getters in favour of `RegexPatterns`
+- Optional console appender for `Logger`
+
+Keep `npm test` green while refactoring; the 1.9.5 suite is the safety net.
+
 ## Work log
 
 ### Done (2026-11-13, committed on `develop` as 1.9.5)
@@ -82,6 +97,5 @@ Consumer-visible behaviour changes in 1.9.5 (shipped as a patch-level bump by ch
 - [ ] Add a CI workflow running `npm test` and `npm run lint`.
 - [ ] `npm audit`: high-severity advisories in `markdown-it` / `linkify-it` (via jsdoc, dev-only) and moderate in `minimatch` (via eslint, dev-only). `npm audit fix` resolves most; re-run `npm run documentation` and `npm run lint` after.
 - [x] Logger honours `level`.
-- [ ] No git tags exist yet — first release tag needed before consumers can use `#semver:` ranges.
 - [x] Committed on `develop` as **1.9.5** (author's choice: 2.0.0 is reserved for a planned major refactor tracked elsewhere). Not tagged yet.
-- [ ] Tag `v1.9.5` and push tags when ready.
+- [x] `v1.9.5` tagged and pushed; merged to `main` (PR #7).
