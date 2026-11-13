@@ -2,7 +2,7 @@
 /**
  * @file
  * @author ThatOneNeji
- * @version 1.6.1
+ * @version 1.9.5
  * @overview
  * <p>This group of classes provide functionality that is reused across the various netstats applications.</p><br>
  * <hr style="margin-top: 1px; margin-bottom: 1px;">
@@ -26,15 +26,22 @@
  * <h6>Declaring and Using</h6>
  * <pre>const Nejiutils = require('commonfunctions').NejiUtils;
  * const NejiUtils = new Nejiutils();</pre><br>
+ * <h4>RegexPatterns</h4>
+ * <p>The <i>RegexPatterns</i> class contains commonly used regex patterns as static getters.</p>
+ * <h6>Declaring and Using</h6>
+ * <pre>const RegexPatterns = require('commonfunctions').RegexPatterns;
+ * const isIPv4 = new RegExp(RegexPatterns.RegexPatternValidIPV4Address).test('10.0.0.1');</pre><br>
  */
 
 
 const Logger = require('./lib/logger.js');
 const MessageBroker = require('./lib/messagebroker.js');
 const NejiUtils = require('./lib/nejiutils.js');
+const RegexPatterns = require('./lib/regexpatterns.js');
 
 module.exports = {
     Logger: Logger,
     MessageBroker: MessageBroker,
-    NejiUtils: NejiUtils
+    NejiUtils: NejiUtils,
+    RegexPatterns: RegexPatterns
 };
